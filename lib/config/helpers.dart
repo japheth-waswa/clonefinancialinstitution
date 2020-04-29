@@ -1,5 +1,5 @@
 class Helpers{
-  static testing(){
-    return 'some text here';
+  static removeLastCharacterFromString(String str){
+    return str.substring(0,str.length-1);
   }
 }

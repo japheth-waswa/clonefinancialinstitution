@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/radial_painter.dart';
 import '../config/config.dart';
+import '../screens/home_screen.dart';
+import '../config/helpers.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,9 +10,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
+  _processServicePin(value, actionType) {
+    setState(() {
+      if (actionType == 'add') {
+        _textEditingController.text = _textEditingController.text + value;
+      }else if (actionType == 'remove') {
+        _textEditingController.text = Helpers.removeLastCharacterFromString(_textEditingController.text);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,87 +67,133 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: 50.0,
+              height: 25.0,
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                left: 100.0,
+                right: 100.0,
+              ),
+              child: TextField(
+                controller: _textEditingController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
+                textAlign: TextAlign.center,
+                autocorrect: false,
+                obscureText: true,
+                enabled: false,
+              ),
+            ),
+            SizedBox(
+              height: 25.0,
             ),
             Row(
               children: <Widget>[
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '1',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '1',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
                     ),
                   ),
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '2',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '2',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
                     ),
                   ),
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '3',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '3',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                KeyboardBuilder(
+                  _processServicePin,
+                  '4',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '5',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '6',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                KeyboardBuilder(
+                  _processServicePin,
+                  '7',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '8',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black38,
+                    ),
+                  ),
+                ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '9',
+                  Border(
+                    bottom: BorderSide(
+                      color: Colors.black38,
                     ),
                   ),
                 ),
@@ -136,175 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '4',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '5',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '6',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '7',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '8',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '9',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                          color: specificBlueColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
+                    onTap: ()=>_processServicePin(null, 'remove'),
                     child: Container(
                       padding: const EdgeInsets.all(
                         30.0,
@@ -324,34 +223,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(
-                        30.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          right: BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                          fontSize: fontSizeH3,
-                        ),
-                      ),
+                KeyboardBuilder(
+                  _processServicePin,
+                  '0',
+                  Border(
+                    right: BorderSide(
+                      color: Colors.black38,
                     ),
                   ),
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () => Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) {
+                      return HomeScreen();
+                    })),
                     child: Container(
+                      color: Colors.white,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(
                         30.0,
@@ -373,6 +261,39 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50.0,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class KeyboardBuilder extends StatelessWidget {
+  final Function onTap;
+  final String keyValue;
+  final Border keyBorder;
+
+  KeyboardBuilder(this.onTap, this.keyValue, this.keyBorder);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => onTap(keyValue, 'add'),
+        child: Container(
+          padding: const EdgeInsets.all(
+            30.0,
+          ),
+          decoration: BoxDecoration(
+            border: keyBorder,
+          ),
+          child: Center(
+            child: Text(
+              keyValue,
+              style: TextStyle(
+                fontSize: fontSizeH3,
+                color: specificBlueColor,
+              ),
+            ),
+          ),
         ),
       ),
     );

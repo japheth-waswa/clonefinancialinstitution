@@ -97,7 +97,7 @@ class BottomSheetApp extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () =>Navigator.of(context).push(MaterialPageRoute(builder: (_){return LoginScreen();})),
+            onTap: () =>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_){return LoginScreen();})),
             child: Column(
               children: <Widget>[
                 Icon(
